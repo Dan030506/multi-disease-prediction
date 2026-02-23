@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Risk Assessment</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: white;
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            transition: opacity 0.3s;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #667eea;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🩸 Diabetes Risk Assessment</h1>
+        
+        <div class="info">
+            <strong>📋 Instructions:</strong> Enter the patient's clinical parameters below.
+            All fields are required for accurate prediction.
+        </div>
+        
+        <form action="/predict/diabetes" method="post">
+            <div class="form-group">
+                <label>Number of Pregnancies:</label>
+                <input type="number" name="pregnancies" min="0" max="20" value="2" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Glucose Level (mg/dL):</label>
+                <input type="number" name="glucose" min="0" max="300" value="120" required>
+                <small>Normal: 70-140</small>
+            </div>
+            
+            <div class="form-group">
+                <label>Blood Pressure (mm Hg):</label>
+                <input type="number" name="bloodpressure" min="0" max="200" value="70" required>
+                <small>Normal: < 80</small>
+            </div>
+            
+            <div class="form-group">
+                <label>Skin Thickness (mm):</label>
+                <input type="number" name="skinthickness" min="0" max="100" value="20" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Insulin Level (mu U/ml):</label>
+                <input type="number" name="insulin" min="0" max="1000" value="80" required>
+            </div>
+            
+            <div class="form-group">
+                <label>BMI (Body Mass Index):</label>
+                <input type="number" step="0.1" name="bmi" min="10" max="70" value="32" required>
+                <small>Normal: 18.5-24.9</small>
+            </div>
+            
+            <div class="form-group">
+                <label>Diabetes Pedigree Function:</label>
+                <input type="number" step="0.001" name="dpf" min="0" max="3" value="0.5" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Age (years):</label>
+                <input type="number" name="age" min="18" max="120" value="35" required>
+            </div>
+            
+            <button type="submit">Predict Diabetes Risk</button>
+        </form>
+        
+        <a href="/" class="back-link">← Back to Home</a>
+    </div>
+</body>
+</html>

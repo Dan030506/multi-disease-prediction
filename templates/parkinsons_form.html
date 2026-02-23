@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parkinson's Disease Risk Assessment</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: white;
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            transition: opacity 0.3s;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #667eea;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧠 Parkinson's Disease Risk Assessment</h1>
+        
+        <div class="info">
+            <strong>📋 Instructions:</strong> Enter voice measurement parameters.
+        </div>
+        
+        <form action="/predict/parkinsons" method="post">
+            <div class="form-group">
+                <label>MDVP:Fo(Hz) - Average vocal fundamental frequency:</label>
+                <input type="number" step="1" name="mdvp_fo" min="50" max="300" value="120" required>
+            </div>
+            
+            <div class="form-group">
+                <label>MDVP:Fhi(Hz) - Maximum vocal fundamental frequency:</label>
+                <input type="number" step="1" name="mdvp_fhi" min="50" max="600" value="150" required>
+            </div>
+            
+            <div class="form-group">
+                <label>MDVP:Flo(Hz) - Minimum vocal fundamental frequency:</label>
+                <input type="number" step="1" name="mdvp_flo" min="40" max="250" value="100" required>
+            </div>
+            
+            <div class="form-group">
+                <label>MDVP:Jitter(%) - Frequency variation:</label>
+                <input type="number" step="0.001" name="jitter" min="0" max="0.1" value="0.005" required>
+            </div>
+            
+            <div class="form-group">
+                <label>MDVP:Shimmer - Amplitude variation:</label>
+                <input type="number" step="0.01" name="shimmer" min="0" max="0.5" value="0.03" required>
+            </div>
+            
+            <div class="form-group">
+                <label>HNR - Harmonics-to-noise ratio:</label>
+                <input type="number" step="1" name="hnr" min="0" max="40" value="20" required>
+            </div>
+            
+            <div class="form-group">
+                <label>RPDE - Recurrence period density entropy:</label>
+                <input type="number" step="0.01" name="rpde" min="0" max="1" value="0.5" required>
+            </div>
+            
+            <div class="form-group">
+                <label>DFA - Detrended fluctuation analysis:</label>
+                <input type="number" step="0.01" name="dfa" min="0" max="1" value="0.6" required>
+            </div>
+            
+            <button type="submit">Predict Parkinson's Risk</button>
+        </form>
+        
+        <a href="/" class="back-link">← Back to Home</a>
+    </div>
+</body>
+</html>

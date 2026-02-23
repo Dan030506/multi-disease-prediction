@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Results</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: white;
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+        }
+        .result-card {
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+        .high-risk {
+            background: #fee;
+            border-left: 5px solid #ff4444;
+        }
+        .low-risk {
+            background: #efe;
+            border-left: 5px solid #00C851;
+        }
+        .prediction {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .probability {
+            font-size: 1.5em;
+            color: #667eea;
+            margin: 20px 0;
+        }
+        .details {
+            text-align: left;
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 10px;
+            transition: opacity 0.3s;
+        }
+        .button:hover {
+            opacity: 0.9;
+        }
+        .confidence-bar {
+            height: 30px;
+            background: #f0f0f0;
+            border-radius: 15px;
+            margin: 10px 0;
+            overflow: hidden;
+        }
+        .confidence-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00C851, #ff4444);
+            transition: width 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Prediction Results</h1>
+        
+        <div class="result-card {% if result.prediction == 'High Risk' %}high-risk{% else %}low-risk{% endif %}">
+            <h2>{{ result.disease }}</h2>
+            
+            <div class="prediction">
+                {{ result.prediction }}
+            </div>
+            
+            <div class="probability">
+                Confidence: {{ result.probability }}
+            </div>
+            
+            <div class="confidence-bar">
+                <div class="confidence-fill" style="width: {{ result.probability }};"></div>
+            </div>
+            
+            <div class="details">
+                <h3>📈 Detailed Probabilities:</h3>
+                <p>✅ Low Risk: {{ result.confidence_no }}</p>
+                <p>⚠️ High Risk: {{ result.confidence_yes }}</p>
+            </div>
+        </div>
+        
+        <a href="/" class="button">🏠 Home</a>
+        <a href="/predict/{{ result.disease|lower|replace(' ', '') }}" class="button">🔄 New Prediction</a>
+    </div>
+</body>
+</html>

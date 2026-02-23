@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Heart Disease Risk Assessment</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: white;
+            color: #333;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            width: 100%;
+            transition: opacity 0.3s;
+        }
+        button:hover {
+            opacity: 0.9;
+        }
+        .info {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #667eea;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>❤️ Heart Disease Risk Assessment</h1>
+        
+        <div class="info">
+            <strong>📋 Instructions:</strong> Enter the patient's cardiovascular parameters.
+        </div>
+        
+        <form action="/predict/heart" method="post">
+            <div class="form-group">
+                <label>Age (years):</label>
+                <input type="number" name="age" min="20" max="100" value="55" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Sex:</label>
+                <select name="sex">
+                    <option value="0">Female</option>
+                    <option value="1" selected>Male</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Chest Pain Type:</label>
+                <select name="cp">
+                    <option value="1">Typical Angina</option>
+                    <option value="2">Atypical Angina</option>
+                    <option value="3">Non-anginal Pain</option>
+                    <option value="4">Asymptomatic</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Resting Blood Pressure (mm Hg):</label>
+                <input type="number" name="trestbps" min="80" max="200" value="130" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Cholesterol (mg/dL):</label>
+                <input type="number" name="chol" min="100" max="600" value="240" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Fasting Blood Sugar > 120 mg/dL:</label>
+                <select name="fbs">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Resting ECG Results:</label>
+                <select name="restecg">
+                    <option value="0">Normal</option>
+                    <option value="1">ST-T Wave Abnormality</option>
+                    <option value="2">Left Ventricular Hypertrophy</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Maximum Heart Rate Achieved:</label>
+                <input type="number" name="thalach" min="60" max="220" value="150" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Exercise Induced Angina:</label>
+                <select name="exang">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>ST Depression (oldpeak):</label>
+                <input type="number" step="0.1" name="oldpeak" min="0" max="10" value="1.0" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Slope of Peak Exercise ST Segment:</label>
+                <select name="slope">
+                    <option value="1">Upsloping</option>
+                    <option value="2">Flat</option>
+                    <option value="3">Downsloping</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Number of Major Vessels (0-3):</label>
+                <input type="number" name="ca" min="0" max="3" value="0" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Thalassemia:</label>
+                <select name="thal">
+                    <option value="3">Normal</option>
+                    <option value="6">Fixed Defect</option>
+                    <option value="7">Reversible Defect</option>
+                </select>
+            </div>
+            
+            <button type="submit">Predict Heart Disease Risk</button>
+        </form>
+        
+        <a href="/" class="back-link">← Back to Home</a>
+    </div>
+</body>
+</html>
