@@ -4,16 +4,7 @@ services:
     runtime: python
     buildCommand: |
       pip install -r requirements.txt
-      python train_on_render.py
-    startCommand: gunicorn app:app
-    envVars:
-      - key: PYTHON_VERSION
-        value: 3.9.18services:
-  - type: web
-    name: multi-disease-prediction
-    runtime: python
-    region: singapore
-    buildCommand: pip install -r requirements.txt
+      python rebuild_all.py
     startCommand: gunicorn app:app
     envVars:
       - key: PYTHON_VERSION
