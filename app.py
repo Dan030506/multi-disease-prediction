@@ -1,4 +1,3 @@
-k# app.py - CORRECTED VERSION (No backslashes in f-strings)
 from flask import Flask, render_template, request
 import numpy as np
 import joblib
