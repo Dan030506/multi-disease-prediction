@@ -1,4 +1,4 @@
-# app.py - ULTIMATE DEBUG VERSION
+k# app.py - CORRECTED VERSION (No backslashes in f-strings)
 from flask import Flask, render_template, request
 import numpy as np
 import joblib
@@ -68,7 +68,7 @@ def home():
 
 @app.route('/debug')
 def debug():
-    """Super detailed debug endpoint"""
+    """Super detailed debug endpoint - FIXED: No backslashes in f-string"""
     info = {
         'working_directory': os.getcwd(),
         'directory_contents': os.listdir('.'),
@@ -79,7 +79,9 @@ def debug():
         'scalers_loaded': [k for k,v in scalers.items() if v is not None],
         'scalers_missing': [k for k,v in scalers.items() if v is None],
     }
-    return f"<pre>{str(info).replace(', ', ',\n')}</pre>"
+    # FIXED: No backslash in f-string, using string replacement instead
+    info_str = str(info).replace(', ', ',\n')
+    return f"<pre>{info_str}</pre>"
 
 @app.route('/predict/<disease>', methods=['GET', 'POST'])
 def predict(disease):
