@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Diabetes Risk Assessment</title>
+    <style>
+        body { font-family: Arial; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: white; color: black; padding: 30px; border-radius: 10px; }
+        h1 { color: #667eea; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input { width: 100%; padding: 8px; }
+        button { background: #667eea; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; width: 100%; }
+        a { display: block; margin-top: 20px; color: #667eea; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🩸 Diabetes Risk Assessment</h1>
+        <form method="post" action="/predict/diabetes">
+            <div class="form-group">
+                <label>Pregnancies:</label>
+                <input type="number" name="pregnancies" value="2" required>
+            </div>
+            <div class="form-group">
+                <label>Glucose:</label>
+                <input type="number" name="glucose" value="120" required>
+            </div>
+            <div class="form-group">
+                <label>Blood Pressure:</label>
+                <input type="number" name="bloodpressure" value="70" required>
+            </div>
+            <div class="form-group">
+                <label>Skin Thickness:</label>
+                <input type="number" name="skinthickness" value="20" required>
+            </div>
+            <div class="form-group">
+                <label>Insulin:</label>
+                <input type="number" name="insulin" value="80" required>
+            </div>
+            <div class="form-group">
+                <label>BMI:</label>
+                <input type="number" step="0.1" name="bmi" value="32" required>
+            </div>
+            <div class="form-group">
+                <label>Diabetes Pedigree:</label>
+                <input type="number" step="0.01" name="dpf" value="0.5" required>
+            </div>
+            <div class="form-group">
+                <label>Age:</label>
+                <input type="number" name="age" value="35" required>
+            </div>
+            <button type="submit">Predict Risk</button>
+        </form>
+        <a href="/">← Back to Home</a>
+    </div>
+</body>
+</html>

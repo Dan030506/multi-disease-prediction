@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+        body { font-family: Arial; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; }
+        .container { max-width: 600px; margin: 0 auto; background: white; color: black; padding: 30px; border-radius: 10px; text-align: center; }
+        .result { font-size: 2em; margin: 20px; padding: 20px; border-radius: 10px; }
+        .high-risk { background: #ffebee; color: #c62828; }
+        .low-risk { background: #e8f5e9; color: #2e7d32; }
+        .buttons { margin-top: 30px; }
+        .btn { background: #667eea; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; margin: 10px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Prediction Result</h1>
+        <h2>{{ result.disease }}</h2>
+        <div class="result {{ 'high-risk' if result.prediction == 'High Risk' else 'low-risk' }}">
+            <strong>{{ result.prediction }}</strong><br>
+            Confidence: {{ result.confidence }}
+        </div>
+        <div>
+            <p>Low Risk Probability: {{ result.prob_no }}</p>
+            <p>High Risk Probability: {{ result.prob_yes }}</p>
+        </div>
+        <div class="buttons">
+            <a href="/" class="btn">Home</a>
+            <a href="/predict/{{ result.disease.lower().replace(' ', '') }}" class="btn">New Prediction</a>
+        </div>
+    </div>
+</body>
+</html>

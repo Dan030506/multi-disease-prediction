@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multi-Disease Prediction</title>
+    <style>
+        body { font-family: Arial; text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 50px; }
+        h1 { font-size: 3em; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .cards { display: flex; justify-content: center; gap: 30px; margin-top: 50px; }
+        .card { background: white; color: black; padding: 30px; border-radius: 10px; width: 250px; text-decoration: none; }
+        .card:hover { transform: scale(1.05); }
+        .card h2 { color: #667eea; }
+        .emoji { font-size: 4em; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 Multi-Disease Prediction System</h1>
+        <p>Select a disease to check your risk</p>
+        <div class="cards">
+            <a href="/predict/diabetes" class="card">
+                <div class="emoji">🩸</div>
+                <h2>Diabetes</h2>
+                <p>Predict diabetes risk based on clinical parameters</p>
+            </a>
+            <a href="/predict/heart" class="card">
+                <div class="emoji">❤️</div>
+                <h2>Heart Disease</h2>
+                <p>Assess cardiovascular health</p>
+            </a>
+            <a href="/predict/parkinsons" class="card">
+                <div class="emoji">🧠</div>
+                <h2>Parkinson's</h2>
+                <p>Analyze voice patterns</p>
+            </a>
+        </div>
+        <p><a href="/debug" style="color: white;">Debug</a></p>
+    </div>
+</body>
+</html>
